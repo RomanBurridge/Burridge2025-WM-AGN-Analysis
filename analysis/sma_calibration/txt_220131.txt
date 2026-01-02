@@ -1,0 +1,5 @@
+$targ0="NGC4258 -r 12:18:57 -d +47:18:14 -e 2000 -v 0"; $ntarg0="30"; 
+$cal0="1159+292"; $ncal0="6";
+$flux0="Uranus"; $nflux0="20";
+$flux1="mwc349a"; $nflux1="20";
+$bpass0="3c84"; $nbpass0="120";
