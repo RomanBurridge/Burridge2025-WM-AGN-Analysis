@@ -8,7 +8,7 @@ from pyuvdata import UVData
 
 def process_folder(folder):
     folder=folder.replace("/","")
-    cwd = '/home/peacesea/Burridge2025_WM_AGN/Public/analysis/sma_calibration/sma_data'
+    cwd = 'analysis/sma_calibration/sma_data'
     UV = UVData()
 
     UV.read_mir(f"{folder}")
