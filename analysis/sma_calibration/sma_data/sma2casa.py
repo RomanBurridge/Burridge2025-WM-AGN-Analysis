@@ -1,22 +1,23 @@
-#in the command line the last / must be ommitted
-#the output file should look like _master.ms
+#!/usr/bin/env python3
 
-#!/opt/anaconda3/envs/pyuvdata/bin/python
+# In the command line the last / must be omitted.
+# The output file should look like _master.ms.
 import os
 import argparse
+from pathlib import Path
 from pyuvdata import UVData
 
 def process_folder(folder):
     folder=folder.replace("/","")
-    cwd = 'analysis/sma_calibration/sma_data'
+    cwd = Path(__file__).resolve().parent
     UV = UVData()
 
     UV.read_mir(f"{folder}")
 
-    UV.write_ms(cwd + f"/{folder}_master.ms")
-    UV.write_uvfits(cwd + f"/{folder}_master.uvfits")
+    UV.write_ms(str(cwd / f"{folder}_master.ms"))
+    UV.write_uvfits(str(cwd / f"{folder}_master.uvfits"))
 
-    uvfits_file = f"{folder}_master.uvfits"
+    uvfits_file = cwd / f"{folder}_master.uvfits"
     os.remove(uvfits_file)
 
 if __name__ == '__main__':

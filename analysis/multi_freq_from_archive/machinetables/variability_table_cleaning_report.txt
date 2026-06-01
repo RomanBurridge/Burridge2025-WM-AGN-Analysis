@@ -1,0 +1,23 @@
+Variability machine-table cleaning report
+
+variability_machine.txt -> variability_machine.txt
+  data_rows: 98
+  warning_rows_removed: 0
+  dates_fixed: 0
+  dates_unchanged: 196
+  dates_unmatched: 0
+  dates_missing_source: 0
+  dates_kept_na: 0
+  rows_removed_unmatched: 0
+  date_validation: passed
+
+correlations_machine.txt -> correlations_machine.txt
+  data_rows: 10584
+  warning_rows_removed: 0
+  dates_fixed: 0
+  dates_unchanged: 20903
+  dates_unmatched: 0
+  dates_missing_source: 0
+  dates_kept_na: 265
+  rows_removed_unmatched: 0
+  date_validation: passed

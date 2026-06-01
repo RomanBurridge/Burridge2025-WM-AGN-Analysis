@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this code or the accompanying machine-readable tables, please cite the Zenodo DOI for this release and the associated AAS Journals manuscript."
+title: "WM-AGN Analysis Code"
+version: "v1.0.7"
+doi: "10.5281/zenodo.20485057"
+date-released: "2026-05-31"
+authors:
+  - family-names: Burridge
+    given-names: Roman N.
+    orcid: "https://orcid.org/0009-0000-3265-7726"
+  - family-names: Bower
+    given-names: Geoffrey C.
+    orcid: "https://orcid.org/0000-0003-4056-9982"
+type: software
+abstract: "Analysis code and lightweight machine-readable tables for submillimeter/millimeter continuum measurements and black-hole-shadow feasibility estimates in water-megamaser disk AGN."
