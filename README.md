@@ -8,6 +8,8 @@ The code calibrates and images SMA observations, gathers and fits archival ALMA/
 
 Large telescope data products are intentionally not included in this Zenodo archive. See `DATA_ACCESS.md` for instructions on retrieving ALMA, VLA/NVAS, and SMA data from their public archives.
 
+Version v1.0.8 corrects the machine-readable continuum table and the software used to generate it. These corrections do not change the printed figures, printed science tables, or scientific conclusions of the accepted manuscript.
+
 ## Contents
 
 - `BH_Parameters.ipynb`: computes black-hole-shadow diameters and uncertainty propagation for the megamaser-disk sample.
@@ -43,7 +45,7 @@ CASA-side packages:
 
 The shell scripts accept `PYTHON_BIN=/path/to/casa-python` when a CASA-specific interpreter is needed.
 
-## Reproducing the Main Workflow
+## Reproducing the Main Analysis
 
 Run notebooks from the release root so that relative paths resolve correctly.
 
@@ -70,7 +72,12 @@ Run notebooks from the release root so that relative paths resolve correctly.
    PYTHON_BIN=/path/to/casa-python bash run_continuum_fits_dirty.sh
    PYTHON_BIN=/path/to/casa-python bash run_continuum_fits_clean.sh
    ```
-6. Generate the 230 GHz reference-flux comparison:
+6. Build the corrected machine-readable continuum table:
+   ```bash
+   cd analysis/multi_freq_from_archive
+   python build_fitsummary_machine.py
+   ```
+7. Generate the 230 GHz reference-flux comparison:
    ```bash
    cd analysis/multi_freq_from_archive
    python s230_reference.py \
@@ -84,5 +91,4 @@ The notebooks `post_processing_finalcontinuum.ipynb`, `Beam_Date_Flux_Graphs.ipy
 
 `fitsummary_machine.txt` gives the full continuum-fitting summary table. For ALMA rows, filenames beginning with `member.uid___...` identify ALMA Member OUS products that can be resolved through the ALMA Science Archive. For VLA rows, filenames are NVAS image products and can be resolved through the NRAO VLA/NVAS archive services. See `DATA_ACCESS.md`.
 
-The variability-screening code is included because it was used as a diagnostic workflow. The diagnostic `variability_machine.txt` and `correlations_machine.txt` products are included in `analysis/multi_freq_from_archive/machinetables/` for reproducibility, but they are not rendered as paper tables. They were cleaned with `clean_variability_tables.py` to restore fit-summary observation dates and remove warning lines from the machine-table body.
-
+The variability-screening code is included because it was used as a diagnostic step. The diagnostic `variability_machine.txt` and `correlations_machine.txt` products are included in `analysis/multi_freq_from_archive/machinetables/` for reproducibility, but they are not rendered as paper tables. They were cleaned with `clean_variability_tables.py` to restore fit-summary observation dates and remove warning lines from the machine-table body.

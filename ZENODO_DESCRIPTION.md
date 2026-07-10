@@ -10,7 +10,9 @@ Primary dependencies include Python, NumPy, SciPy, pandas, Matplotlib, Astropy, 
 
 This version is intended to correspond to the final revised analysis for the AAS Journals manuscript.
 
-This v1.0.7 release updates the SED/spectral-plot angular-to-linear scale inset labels in `Beam_Date_Flux_Graphs.ipynb`; all other analysis contents are unchanged from v1.0.6.
+This v1.0.8 release corrects the machine-readable continuum table and the software used to generate it. The corrected table restores two omitted rows, removes duplicate NGC4258 literature rows, restores the full Doi et al. reference text, uses `SMA_this_work` for the SMA rows from this work, preserves the fit-results numeric precision in the machine-readable table, and updates the AAS/CDS byte-by-byte header line for the FWHM `*` entry.
+
+The manuscript table `tab2.txt`, the AAS production file `datafile2.txt`, and `analysis/multi_freq_from_archive/machinetables/fitsummary_machine.txt` refer to the same continuum table in different contexts. These corrections do not change the printed figures, printed science tables, or scientific conclusions of the accepted manuscript.
 
 ## Suggested Keywords
 

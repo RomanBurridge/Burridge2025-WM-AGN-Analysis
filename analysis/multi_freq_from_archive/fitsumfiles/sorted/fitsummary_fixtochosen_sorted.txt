@@ -10,8 +10,8 @@
 ['Circinus', 'ALMA', '182.14', '22.63', '2018/12/01_1', '0.59716', '42.840', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X43a.Circinus_galaxy_sci.spw23_25_27_29.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '185.91', '18.99', '2023/12/05_1', '0.21017', '184.103', 'ALMA/CircinusGalaxy/member.uid___A001_X3621_X424b.Circinus_galaxy_sci.spw25_27_29_31.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '223.00', '50.54', '2019/05/05_1', '5.82942', '36.061', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X114.SN1996cr_sci.spw4_6_16_18.cont.I.pbcor.fits\n']
-['Circinus', 'ALMA', '225.27', '54.91', '2019/01/18_1', '5.97513', '13.306', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X3c37.Circinus_sci.spw16_18_20_22_24.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '225.27', '52.69', '2019/01/18_2', '5.91949', '13.457', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X3c31.Circinus_sci.spw16_18_20_22_24.cont.I.pbcor.fits\n']
+['Circinus', 'ALMA', '225.27', '54.91', '2019/01/18_1', '5.97513', '13.306', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X3c37.Circinus_sci.spw16_18_20_22_24.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '258.82', '13.91', '2019/08/15_1', '0.13264', '90.816', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X1049.Circinus_galaxy_sci.spw25_27_29_31.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '258.83', '14.27', '2019/06/06_1', '0.02063', '592.442', 'ALMA/CircinusGalaxy/member.uid___A001_X133d_X1047.Circinus_galaxy_sci.spw25_27_29_31.cont.I.pbcor.fits\n']
 ['Circinus', 'ALMA', '265.16', '39.54', '2015/12/31_1', '1.24726', '68.491', 'ALMA/CircinusGalaxy/member.uid___A001_X2f7_X205.ari_l.circinus_sci.spw0_1_2_265156MHz.12m.cont.I.pbcor.fits\n']
@@ -32,7 +32,6 @@
 ['Circinus', 'ALMA', '664.60', '23.95', '2021/07/01_1', '0.06454', '35.492', 'ALMA/CircinusGalaxy/member.uid___A001_X1465_X3d69.circinus_sci.spw33_35_37_39_41_43_45_47.cont.I.pbcor.fits\n']
 
 
-['ESO558-G009', 'VLA', '33', '0.8', 'NA', '0.19-0.50', '20.000', 'Kamali, 2017, A&A, 605:A84\n']
 ['ESO558-G009', 'SMA', '225.55', '3.74*', '2023/03/16_1', '5.61671', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/ESO558-G009_test.image\n']
 ['ESO558-G009', 'ALMA', '316.94', '0.82*', '2014/12/13_1', '0.87561', 'NA', 'ALMA/ESO558-G009/member.uid___A001_X122_X604.calibrated_final_cont_image.pbcor.fits\n']
 
@@ -47,7 +46,6 @@
 ['IC2560', 'VLA', '22.02', '0.28*', '2004/12/30_1', '0.13376', 'NA', 'VLA/IC2560/22.0I0.14_BG0155_2004DEC30_1_118.U42.6S.imfits\n']
 ['IC2560', 'VLA', '22.12', '10.44', '1996/03/02_1', '1.22850', '20.094', 'VLA/IC2560/22.1I1.32_BN2_1996MAR02_1_170.U56.5S.imfits\n']
 ['IC2560', 'VLA', '22.12', '10.15', '1998/01/02_1', '3.55365', '8.567', 'VLA/IC2560/22.1I3.83_BN006_1998JAN02_1_255.U56.8S.imfits\n']
-['IC2560', 'VLA', '33', '2.0', 'NA', '0.19-0.50', '20.000', 'Kamali, 2017, A&A, 605:A84\n']
 ['IC2560', 'ALMA', '85.88', '1.27', '2016/06/14_1', '1.37172', '11.459', 'ALMA/IC2560/member.uid___A001_X2d8_X48d.ari_l.IC_2560_sci.spw0_1_2_3_85878MHz.12m.cont.I.pbcor.fits\n']
 ['IC2560', 'ALMA', '234.45', '1.86', '2021/11/28_1', '5.07725', '9.651', 'ALMA/IC2560/member.uid___A001_X1590_Xa66.IC_2560_sci.spw16_18_20_22.cont.I.pbcor.fits\n']
 ['IC2560', 'ALMA', '318.11', '1.45', '2014/12/31_1', '0.81360', '7.864', 'ALMA/IC2560/member.uid___A001_X122_X5f8.ari_l.IC_2560_sci.spw0_1_2_3_318112MHz.12m.cont.I.pbcor.fits\n']
@@ -55,7 +53,6 @@
 ['IC2560', 'ALMA', '651.64', '4.40', '2014/12/12_1', '0.36982', '3.964', 'ALMA/IC2560/member.uid___A001_X122_X60c.ari_l.IC_2560_sci.spw0_1_2_3_651640MHz.12m.cont.I.pbcor.fits\n']
 
 
-['MRK1029', 'VLA', '33', '1.18', 'NA', '0.19-0.50', '8.429', 'Kamali, 2017, A&A, 605:A84\n']
 ['MRK1029', 'SMA', '225.54', '2.85*', '2023/03/16_1', '5.98143', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/MRK1029_test.image\n']
 
 
@@ -124,7 +121,6 @@
 
 ['NGC1194', 'VLA', '1.49', '1.16*', '1988/05/03_1', '14.87814', 'NA', 'VLA/NGC1194/1.51I14.9_AB0488_1988MAY03_1_143.U10.1M.imfits\n']
 ['NGC1194', 'VLA', '4.86', '1.54', '1988/05/03_1', '4.39947', '8.343', 'VLA/NGC1194/4.89I4.41_AB0488_1988MAY03_1_90.5U4.55M.imfits\n']
-['NGC1194', 'VLA', '33', '1.08', 'NA', '0.19-0.50', '27.000', 'Kamali, 2017, A&A, 605:A84\n']
 ['NGC1194', 'ALMA', '85.92', '1.39', '2016/06/29_1', '1.42548', '10.702', 'ALMA/NGC1194/member.uid___A001_X5a3_X15b.ari_l.NGC_1194_sci.spw0_1_2_3_85918MHz.12m.cont.I.pbcor.fits\n']
 ['NGC1194', 'ALMA', '179.97', '1.47', '2018/11/16_1', '0.35696', '12.719', 'ALMA/NGC1194/member.uid___A001_X133d_X3fa.NGC_1194_sci.spw23_25_27_29.cont.I.pbcor.fits\n']
 ['NGC1194', 'SMA', '225.54', '9.57*', '2023/03/16_1', '6.35662', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/NGC1194_test.image\n']
@@ -163,7 +159,6 @@
 ['NGC2273', 'VLA', '14.94', '6.71', '2002/10/14_1', '1.38495', '9.919', 'VLA/NGC2273/14.9I1.40_AA274_2002OCT14_1_329.U1.43M.imfits\n']
 ['NGC2273', 'VLA', '22.46', '2.60', '2002/07/29_1', '0.27970', '10.687', 'VLA/NGC2273/22.4I0.27_AA270_2002JUL29_1_138.U55.6S.imfits\n']
 ['NGC2273', 'VLA', '22.46', '4.25', '2002/10/14_1', '0.97482', '10.933', 'VLA/NGC2273/22.4I0.97_AA274_2002OCT14_1_167.U55.7S.imfits\n']
-['NGC2273', 'VLA', '33', '2.69', 'NA', '0.19-0.50', '9.276', 'Kamali, 2017, A&A, 605:A84\n']
 ['NGC2273', 'VLA', '43.34', '2.66', '2002/10/14_1', '0.49883', '6.065', 'VLA/NGC2273/43.3I0.51_AA274_2002OCT14_1_219.U26.6S.imfits\n']
 ['NGC2273', 'SMA', '225.53', '8.29*', '2023/03/16_1', '5.44929', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/NGC2273_test.image\n']
 
@@ -268,7 +263,6 @@
 ['NGC3393', 'VLA', '8.46', '0.55', '2000/11/14_1', '0.36878', '5.715', 'VLA/NGC3393/8.49I0.44_AB0973_2000NOV14_1_46.3U49.3S.imfits\n']
 ['NGC3393', 'VLA', '21.96', '33.50', '2004/04/26_1', '1.14296', '24.659', 'VLA/NGC3393/21.9I1.20_BK0110_2004APR26_1_367.U57.0S.imfits\n']
 ['NGC3393', 'VLA', '22.46', '0.91*', '2003/09/25_1', '0.32466', 'NA', 'VLA/NGC3393/22.4I0.34_AK0574_2003SEP25_1_328.U55.6S.imfits\n']
-['NGC3393', 'VLA', '33', '5.30', 'NA', '0.19-0.50', '14.722', 'Kamali, 2017, A&A, 605:A84\n']
 ['NGC3393', 'ALMA', '85.88', '1.24', '2016/06/12_1', '1.30354', '6.375', 'ALMA/NGC3393/member.uid___A001_X2d8_X491.ari_l.NGC_3393_sci.spw0_1_2_3_85877MHz.12m.cont.I.pbcor.fits\n']
 ['NGC3393', 'ALMA', '180.16', '0.35', '2018/11/14_1', '0.32204', '4.183', 'ALMA/NGC3393/member.uid___A001_X133d_X412.NGC_3393_sci.spw23_25_27_29.cont.I.pbcor.fits\n']
 ['NGC3393', 'ALMA', '229.35', '0.35', '2017/05/02_1', '0.33163', '4.150', 'ALMA/NGC3393/member.uid___A001_X87d_X5ca.NGC_3393_sci.spw19_21_23_25.cont.I.pbcor.fits\n']
@@ -359,9 +353,7 @@
 ['NGC4258', 'VLA', '22.46', '525.33', '2004/11/24_1', '0.08150', '80.779', 'VLA/NGC4258/22.4I0.08_AH0847_2004NOV24_1_4.23M44.6S.imfits\n']
 ['NGC4258', 'VLA', '22.46', '2.67', '2005/02/10_1', '0.15559', '20.775', 'VLA/NGC4258/22.4I0.17_AH0847_2005FEB10_1_76.3U55.6S.imfits\n']
 ['NGC4258', 'VLA', '43.34', '5.82', '2000/12/21_1', '0.04974', '7.338', 'VLA/NGC4258/43.3I0.05_AN0097_2000DEC21_1_502.U26.6S.imfits\n']
-['NGC4258', 'NMA', '96', '11', 'NA', '7', '4.074', 'Doi et al, 2005, MNRAS, 363:2\n']
 ['NGC4258', 'SMA', '225.51', '12.41', '2023/03/16_1', '5.63004', '5.430', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/clean/nitercal_6/flag2_cal1/fields/science/NGC4258_test.image\n']
-['NGC4258', 'SCUBA-JCMT', '347', '93.7', 'NA', '15', '3.198', 'Doi et al, 2005, MNRAS, 363:2\n']
 
 
 ['NGC4388', 'VLA', '1.43', '13.03', '1998/05/13_1', '1.27302', '13.974', 'VLA/NGC4388/1.45I1.27_AI73_1998MAY13_1_64.0U29.6S.imfits\n']
@@ -387,7 +379,6 @@
 ['NGC4388', 'VLA', '14.94', '2.98', '1986/05/10_1', '0.12100', '21.941', 'VLA/NGC4388/14.9I0.12_AC0156_1986MAY10_1_116.U43.0S.imfits\n']
 ['NGC4388', 'VLA', '14.94', '2.56', '1998/03/03_1', '0.12494', '7.070', 'VLA/NGC4388/14.9I0.12_AF0339_1998MAR03_1_307.U45.5S.imfits\n']
 ['NGC4388', 'VLA', '14.94', '1.56', '1998/03/05_1', '0.11786', '4.706', 'VLA/NGC4388/14.9I0.11_AF0339_1998MAR05_1_286.U42.9S.imfits\n']
-['NGC4388', 'VLA', '33', '8.57', 'NA', '0.19-0.50', '19.930', 'Kamali, 2017, A&A, 605:A84\n']
 ['NGC4388', 'VLA', '43.34', '0.89*', '1998/02/26_1', '0.04461', 'NA', 'VLA/NGC4388/43.3I0.04_AG0527_1998FEB26_1_323.U26.6S.imfits\n']
 ['NGC4388', 'ALMA', '85.87', '2.17', '2016/07/02_1', '1.31450', '17.296', 'ALMA/NGC4388/member.uid___A001_X5a3_X16b.ari_l.NGC_4388_sci.spw0_1_2_3_85869MHz.12m.cont.I.pbcor.fits\n']
 ['NGC4388', 'ALMA', '223.52', '6.65', '2019/12/22_1', '5.88310', '8.790', 'ALMA/NGC4388/member.uid___A001_X1465_X252f.NGC_4388_sci.spw16_18_20_22.cont.I.pbcor.fits\n']
@@ -427,7 +418,6 @@
 
 
 ['NGC5495', 'VLA', '22.46', '0.71*', '2003/09/27_1', '0.35195', 'NA', 'VLA/NGC5495/22.4I0.37_AK0574_2003SEP27_1_246.U55.6S.imfits\n']
-['NGC5495', 'VLA', '33', '0.13', 'NA', '0.19-0.50', '6.500', 'Kamali, 2017, A&A, 605:A84\n']
 ['NGC5495', 'ALMA', '178.39', '0.12*', '2018/12/06_1', '0.69094', 'NA', 'ALMA/NGC5495/member.uid___A001_X133d_X422.NGC_5495_sci.spw23_25_27_29.cont.I.pbcor.fits\n']
 
 
@@ -450,7 +440,6 @@
 ['NGC6323', 'SMA', '225.49', '6.24*', '2023/03/16_1', '5.11234', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/NGC6323_test.image\n']
 
 
-['UGC3789', 'VLA', '33', '0.21', 'NA', '0.19-0.50', '10.500', 'Kamali, 2017, A&A, 605:A84\n']
 ['UGC3789', 'SMA', '225.53', '6.42*', '2023/03/16_1', '5.35078', 'NA', '/home/peacesea/research/Geoff/SMA/Burridge2025-WM-AGN-Analysis/analysis/sma_calibration/230316_128/images/nitercal_0/flag2_cal1/fields/science/UGC3789_test.image\n']
 
 

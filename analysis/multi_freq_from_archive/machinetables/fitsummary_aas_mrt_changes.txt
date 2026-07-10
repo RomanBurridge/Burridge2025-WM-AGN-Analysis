@@ -1,0 +1,17 @@
+Changes in the corrected machine-readable continuum table
+
+1. Restored the CGCG074-064 ALMA row, which was present in the fit-results table but was accidentally dropped during generation of the machine-readable table.
+
+2. Added the MRK1029 VLA 33 GHz literature row from Kamali, 2017, A&A, 605:A84, which was accidentally omitted during generation of the machine-readable table.
+
+3. Removed duplicate NGC4258 literature rows and restored the full Doi et al. reference.
+
+4. Set the SMA rows from this work to use the identifier "SMA_this_work".
+
+5. Restored the numeric precision from the fit-results table in the machine-readable table. In the corrected AAS file, frequencies are reported to 0.01 GHz, fluxes to 0.01 mJy/beam, FWHM values to 0.00001 arcsec, and numeric SNR values to 0.001. The same flux precision is used for upper limits.
+
+6. Updated the byte-by-byte header line for the FWHM "*" entry to match the existing explanatory note.
+
+7. Corrected the title spacing: "Measure: Assessing".
+
+8. Updated the Zenodo/GitHub table-making software so it produces the corrected machine-readable table.

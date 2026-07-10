@@ -1,9 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this code or the accompanying machine-readable tables, please cite the Zenodo DOI for this release and the associated AAS Journals manuscript."
 title: "WM-AGN Analysis Code"
-version: "v1.0.7"
-doi: "10.5281/zenodo.20485057"
-date-released: "2026-05-31"
+version: "v1.0.8"
+date-released: "2026-07-10"
 authors:
   - family-names: Burridge
     given-names: Roman N.
