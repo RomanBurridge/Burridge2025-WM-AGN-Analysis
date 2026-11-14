@@ -1,0 +1,15 @@
+source,component,scenario,adoption_status,adoption_reason
+Circinus,dust,standard,adopted,Minimum eligible 230 GHz projection.
+Circinus,jet,standard,adopted,Minimum eligible 230 GHz projection; selected literature datum is ATCA.
+NGC1068,dust,central_only,adopted,Dust result is independent of the jet-component scenario.
+NGC1068,jet,central_only,not_adopted,Figure 1's central image peak is diagnostic only; the manuscript method requires the total resolved-component flux.
+NGC1068,dust,summed_components,adopted,Dust result is independent of the jet-component scenario.
+NGC1068,jet,summed_components,adopted,Section 2.3 of Gallimore et al. 2024 directly reports the total six-Gaussian plus two-point-source HSA S1 model flux required by the manuscript method.
+NGC1194,dust,standard,adopted,Minimum eligible 230 GHz projection uses the admitted 310.042 GHz ALMA measurement.
+NGC1194,jet,standard,adopted,Minimum eligible projection uses the detected broad-beam target-associated blended 1.49 GHz component as a conservative attribution upper bound; propagate its local scaled-MAD measurement term while excluding attribution beam-model calibration and variability systematics.
+NGC3079,dust,standard,not_available,No archive or literature dust candidate lies strictly above 1.1 times 230 GHz.
+NGC3079,jet,standard,adopted,Minimum eligible compact result is selected across archive and literature candidates.
+NGC4258,dust,standard,adopted,Minimum eligible 230 GHz projection.
+NGC4258,jet,standard,adopted,Minimum eligible 230 GHz projection.
+NGC4945,dust,standard,adopted,Minimum eligible 230 GHz projection.
+NGC4945,jet,standard,not_adopted,The selected centimeter-to-millimeter extrapolation is retained diagnostically but not adopted because the input is likely dominated by star formation and free-free emission rather than the compact jet.

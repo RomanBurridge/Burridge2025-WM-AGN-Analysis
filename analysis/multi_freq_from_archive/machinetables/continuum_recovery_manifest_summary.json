@@ -1,0 +1,23 @@
+{
+  "all_local_products_have_recorded_hashes": true,
+  "checksum_lock_sha256": "b2911be5a40cae7adc5aeaba9c5fa3561befa6c1be9695870bc4e3dd34fa7104",
+  "contains_absolute_home_paths": false,
+  "directory_hash_algorithm": "sha256-relpath-tree-v1: SHA-256 over sorted relative directory, symlink, and regular-file entries; regular files contribute size and SHA-256; filesystem metadata and absolute paths are excluded",
+  "final_table_sha256": "fe14f16400a3e880176d34202033e037630b3b8911a159e56cb9a5f65c055a3a",
+  "literature_only_count": 16,
+  "local_product_count": 485,
+  "local_product_total_bytes": 6040874990,
+  "provenance_kind_counts": {
+    "alma_archive_fits": 222,
+    "literature_measurement": 16,
+    "nvas_image_product": 248,
+    "sma_casa_image": 15
+  },
+  "recovery_status_counts": {
+    "literature_only_no_local_product": 16,
+    "local_product_hash_verified": 485
+  },
+  "row_count": 501,
+  "schema_version": 1,
+  "unique_record_ids": 501
+}

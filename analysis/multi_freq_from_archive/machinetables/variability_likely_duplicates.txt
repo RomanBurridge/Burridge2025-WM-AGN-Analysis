@@ -1,0 +1,1 @@
+likely_duplicate_group	source	reason	record_id	telescope	product	frequency_ghz	flux_density_mjy	flux_status	date_label	beam_fwhm_input_arcsec	fit_snr

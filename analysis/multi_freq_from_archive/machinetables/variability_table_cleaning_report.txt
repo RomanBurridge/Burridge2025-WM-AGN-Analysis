@@ -1,3 +1,16 @@
+LEGACY v1.0.8 variability machine-table cleaning report — superseded
+
+This historical report describes the old 98-row/10,584-row notebook products.
+The current corrected tables are generated directly by
+build_variability_tables.py and contain 95 matched-pair screening rows and
+10,137 analysis-sample pairs from 413 sample measurements after the older IC
+2560 reduction and nine bandwidth-smeared VLA products are excluded upstream,
+and ancillary NGC 5495 is excluded by the source-role manifest. Two of the 95 screening
+rows are explicitly non-temporal same-day comparisons.  Do not run
+clean_variability_tables.py on the corrected tab-separated products.
+
+Original legacy report follows:
+
 Variability machine-table cleaning report
 
 variability_machine.txt -> variability_machine.txt

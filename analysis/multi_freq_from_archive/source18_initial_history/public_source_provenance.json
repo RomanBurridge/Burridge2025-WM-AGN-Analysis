@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "historical_corrections": 66,
+    "historical_photometry": 27,
+    "new_NGC4945_products": 18,
+    "unchanged_other_source_corrections": 39
+  },
+  "historical_sha256": {
+    "ngc4945_nuclear_photometry.csv": "c54a119f577da7f3c28c4d3fd8c6270e6c50e891211a5f697d93c7968a2de270",
+    "validated_continuum_corrections.csv": "89f7c157cc4888c64a26e22a667854e82a8c669364aca6441e7720e8d8353d91"
+  },
+  "lineage": "OLD fields from public correction ledger, never409 fitted values",
+  "public_member_sha256": {
+    "continuum_product_addition_policy.csv": "903cf3813bfd56c8a24593e4898ff1ce7a7c866a755455646aaf6097e663aa5e",
+    "fitsumfiles/historical/fitsummary_fixtochosen_sorted_409_reference.txt": "c1b3f8e5f3829fab4eecc8bdf8d0e537ee77d68ab89f711189f897f2f2bdf4f8",
+    "ngc4945_nuclear_photometry.csv": "365878f9099c075a8702bf158523782b62c265d50592e3a2e49df773057c3650",
+    "validated_continuum_corrections.csv": "93a6095ed704fc94a421c6bda6f81ac5b5f52c16c8aecf33ca1f8864931e3f11"
+  },
+  "public_release": "Zenodo v1.0.10 record22121490",
+  "public_zip_sha256": "05672f6e083ddbea78375741390cb51fd17dc8186997a0d0086746a91dbd9734",
+  "qualification": "Historical metadata only; fresh source18 measurement remains mandatory",
+  "schema_version": 1,
+  "selection": "409 NGC4945 product keys ONLY; retain raw CSV records in original order",
+  "serialization": "unchanged headers, values, quoting, newlines and relative record order"
+}

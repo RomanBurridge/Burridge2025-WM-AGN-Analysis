@@ -1,0 +1,114 @@
+{
+  "artifacts": {
+    "addition_policy": {
+      "path": "analysis/multi_freq_from_archive/continuum_product_addition_policy.csv",
+      "sha256": "903cf3813bfd56c8a24593e4898ff1ce7a7c866a755455646aaf6097e663aa5e"
+    },
+    "analysis_utils_snapshot": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/analysis_utils_snapshot.json",
+      "sha256": "cdae11d2e2189f5870ccd2ff568b6df71b539367ae2fd9bae54f64fdfd52886c"
+    },
+    "boundary_rejection_policy": {
+      "path": "analysis/multi_freq_from_archive/continuum_boundary_rejection_policy.csv",
+      "sha256": "f0d83e2ba7006850219a2182c50fe0650ec2a8f384a8f55c4cf3d56c9e98eea7"
+    },
+    "canonical_table": {
+      "path": "analysis/multi_freq_from_archive/fitsumfiles/historical/fitsummary_fixtochosen_sorted_409_reference.txt",
+      "sha256": "c1b3f8e5f3829fab4eecc8bdf8d0e537ee77d68ab89f711189f897f2f2bdf4f8"
+    },
+    "classification_identity_policy": {
+      "path": "analysis/multi_freq_from_archive/continuum_classification_identity_policy.csv",
+      "sha256": "59c097bf640977de46fc38d2b68af8a3d2d30cb19b6fda36d7d90e179b7e17b3"
+    },
+    "classification_identity_validation": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/classification_identity_validation.json",
+      "sha256": "3dc6ce4cfb180454199d249fff6c359968415f1e1d87f79edcf8284c2e239e89"
+    },
+    "correction_manifest_transition_validation": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/correction_manifest_transition_validation.json",
+      "sha256": "229be1af3a30f9d783b2ea4ed683e82c43bf33e09b6d7b406c4fd0cbfb2632e5"
+    },
+    "exclusion_policy": {
+      "path": "analysis/multi_freq_from_archive/continuum_product_exclusion_policy.csv",
+      "sha256": "858cf6ecda469ba91ce5f2adae0e621443d4f9991bf94c2aa41b5b7e3231ddb0"
+    },
+    "final_noise_inventory_validation": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/final_noise_inventory_validation.json",
+      "sha256": "9b1abe6f3f6b0d929947386189813e1d1b5c43ffd05bd879d3e578cf1f3977e3"
+    },
+    "final_stage_snapshot": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/ngc4945_fixed_nucleus_check.artifacts.json",
+      "sha256": "92b401d88321317bf6c61a2e1ebef9096048c2cacbafa0c4fde130085aafec89"
+    },
+    "generated_table": {
+      "path": "analysis/multi_freq_from_archive/fitsumfiles/sorted/230316_2_fitsummary_fixedtochosen_sorted.txt",
+      "sha256": "1bb7db5304ccdfa154a07f691cfa8f90ea40755f05c7c60fb7dca13c39cbf75b"
+    },
+    "generic_final_noise_audit": {
+      "path": "analysis/multi_freq_from_archive/fitsumfiles/noise_audits/230316_2_final_publication_noise_audit.csv",
+      "sha256": "3fcf7f23b7647b3e84f7e35bba7dbd7fa7708f9aeca4191aefcf793172b7d6a2"
+    },
+    "initial_comparison": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/current_corrected_table_comparison.json",
+      "sha256": "aefa34c048648dfacfd78af0db451315bf4a777f2ecee75ed72b72a10ddbfdc3"
+    },
+    "ngc4945_component_audit": {
+      "path": "analysis/multi_freq_from_archive/ngc4945_component_audit.csv",
+      "sha256": "034da862c91e4e4691054b01d0b15f2e1dab5080b1e1c0eb0b875269e25ba173"
+    },
+    "ngc4945_nuclear_photometry": {
+      "path": "analysis/multi_freq_from_archive/ngc4945_nuclear_photometry.csv",
+      "sha256": "365878f9099c075a8702bf158523782b62c265d50592e3a2e49df773057c3650"
+    },
+    "postrun_cumulative_corrections": {
+      "path": "analysis/multi_freq_from_archive/validated_continuum_corrections.csv",
+      "sha256": "93a6095ed704fc94a421c6bda6f81ac5b5f52c16c8aecf33ca1f8864931e3f11"
+    },
+    "preapplication_cumulative_corrections": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/preapplication_validated_continuum_corrections.csv",
+      "sha256": "89f7c157cc4888c64a26e22a667854e82a8c669364aca6441e7720e8d8353d91"
+    },
+    "prepared_archive_inventory": {
+      "path": ".continuum-fit-inputs.json",
+      "sha256": "9adaf287a8dd5576c895a916f3e7442a49524273e0f6bfdc89bef463fdb1551f"
+    },
+    "prepared_input_integrity": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/prepared_input_integrity.json",
+      "sha256": "773581548f55ab6894e818339247092710e4d41ddcb9d4ddb6d628834e080e34"
+    },
+    "reviewed_addition_csv": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/reviewed_new_product_additions.csv",
+      "sha256": "ba8fbe138d8236a7c1acee444a552b5c4af90646b8340bc39b8759fecca635fa"
+    },
+    "reviewed_delta_csv": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/reviewed_current_to_generated_deltas.csv",
+      "sha256": "f3093fe1437438ade2dd96cc6aa2177fd9a37487d0d62194139f628b65953909"
+    },
+    "workflow_plan": {
+      "path": "analysis/multi_freq_from_archive/workflow_runs/candidate-v1011-230316-flag2-20261029-r03/plan.json",
+      "sha256": "4ee763e910048bd7f169ed68936ed3dc8216b7880c43e3b889871429f3806aed"
+    }
+  },
+  "expected_counts": {
+    "addition_policy_rows": 89,
+    "boundary_rejected_noise_audit_rows": 3,
+    "boundary_rejection_policy_rows": 3,
+    "canonical_rows": 409,
+    "classification_identity_rows": 100,
+    "generated_rows": 495,
+    "generic_noise_audit_rows": 498,
+    "generic_publication_noise_audit_rows": 495,
+    "ngc4945_component_rows": 7,
+    "ngc4945_photometry_rows": 45,
+    "postrun_correction_rows": 84,
+    "preapplication_correction_rows": 66,
+    "publication_addition_rows": 89,
+    "reviewed_addition_rows": 89,
+    "reviewed_delta_rows": 393,
+    "reviewed_exclusion_rows": 3
+  },
+  "review_scope": "final_local_source_excluded_scaled_mad",
+  "review_status": "frozen_after_exact_inventory_delta_and_identity_review",
+  "run_id": "candidate-v1011-230316-flag2-20261029-r03",
+  "schema_version": 3
+}

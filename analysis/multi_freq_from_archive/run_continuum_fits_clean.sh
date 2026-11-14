@@ -51,6 +51,7 @@ do
                         --printbadfix 0 \
                         --telechooser 0 \
                         --telechoice SMA \
+                        --use_selected_clean_manifest \
                         --moveniter "$nitermover" \
                         --niternum "$nitercal" \
                         --smapath "${smapath}"

@@ -4,6 +4,7 @@
 # In[1]:
 
 import argparse
+import json
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
@@ -191,6 +192,9 @@ printer=True
 tcleaner=True
 
 input_folder=f'{fundir2}/sma_data/{namer}_master.ms/'
+from sma_channelization import check_measurement_set
+print('SMA channel preflight: ' + json.dumps(
+    check_measurement_set(input_folder, date=date, averaging=binsize), sort_keys=True))
 new_folder_name = input_folder.replace("master", "")
 new_folder_name = new_folder_name.replace("sma_data/", "")
 parent_folder_name = new_folder_name.replace("_.ms", "")

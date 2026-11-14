@@ -8,10 +8,34 @@ Changes in the corrected machine-readable continuum table
 
 4. Set the SMA rows from this work to use the identifier "SMA_this_work".
 
-5. Restored the numeric precision from the fit-results table in the machine-readable table. In the corrected AAS file, frequencies are reported to 0.01 GHz, fluxes to 0.01 mJy/beam, FWHM values to 0.00001 arcsec, and numeric SNR values to 0.001. The same flux precision is used for upper limits.
+5. Restored the numeric precision from the fit-results table in the machine-readable table. In the corrected AAS file, frequencies are reported to 0.01 GHz, fitted-component or literature flux densities to 0.01 mJy, FWHM values to 0.00001 arcsec, and numeric SNR values to 0.001. The same flux-density precision is used for upper limits.
 
 6. Updated the byte-by-byte header line for the FWHM "*" entry to match the existing explanatory note.
 
 7. Corrected the title spacing: "Measure: Assessing".
 
 8. Updated the Zenodo/GitHub table-making software so it produces the corrected machine-readable table.
+
+9. Retained the later 2009 BB0091 NVAS reduction as the sole IC2560 measurement for the 1998-01-06 BB091 observation. The older 2007 BB091 reduction is preserved, rather than silently discarded, in continuum_product_aliases.csv with both product hashes and the matching FITS-header evidence.
+
+10. Clarified that a date suffix greater than 1 distinguishes another continuum image product on the same calendar date and does not by itself imply an independent observing epoch.
+
+11. Retained the three NGC5495 catalog measurements while excluding that source from the 21-source sample and all sample-level calculations.
+
+12. Replaced the historical sub-1-mJy formatter, which deleted zero digits, with ordinary two-decimal rounding. The validated formatter correction changes five detections and six upper limits.
+
+13. Corrected the VLA/SMA anchor pair so that J2000 right ascension is used with J2000 declination rather than ICRS declination. Extended the active fitter to read each image's celestial-reference metadata instead of assuming every ALMA image is ICRS. The header-aware rerun adds three flux-field and three S/N-field corrections to the earlier validated manifest.
+
+14. At the earlier RMS-correction layer, recalculated fit SNR from the source-excluded background RMS once, without adding the related residual-derived CASA formal fit error in quadrature. Fourteen detections received that direct noise correction; coordinate-refitted rows also carried their corresponding corrected SNR. Item 19 records the superseding final scaled-MAD release policy.
+
+15. Corrected the NGC4945 physical anchor from Emig et al. (2020) source 17, an SSC/SNR-associated component, to source 18, the AGN/maser nucleus. All 27 NGC4945 continuum images were remeasured at the fixed source-18 ICRS coordinate with the restoring beam fixed. The final release uses the same source-excluded 10-BMAJ local scaled-MAD estimator as the other ordinary final rows; classic RMS and the free-centroid/fit-region results remain diagnostics. The rejected source-17 result and all sensitivity checks are preserved in machine-readable audit sidecars.
+
+16. Removed three failed NGC4258 NVAS reductions. The 1997-01-04 15.36 GHz and 1996-12-31 22.46 GHz reductions had been forced to upper limits despite converged fits many restoring beams from the maser nucleus; they are replaced by the same-observation Doi et al. (2013, ApJ 765, 63) reprocessed detections of 3.5 +/- 0.2 mJy at 15.365 GHz and 3.1 +/- 0.4 mJy at 22.460 GHz. The 2004-05-22 AH0847 22.46 GHz image has bright diagonal stripe artifacts crossing the nucleus, so its legacy 79.89 mJy row is removed without replacement. All three image identities, hashes, headers, former rows, fit/image evidence, exclusion reasons, and replacement dispositions are preserved in continuum_product_exclusions.csv; the literature rows do not claim provenance from the failed NVAS images.
+
+17. Renamed column 8 and the table title to describe product-or-literature provenance. Image-based rows identify fitted ALMA, NVAS, or SMA products, while literature-only rows identify the cited published measurement rather than an archive image fit.
+
+18. Widened the numeric SNR field from A7 at bytes 66--72 to A8 at bytes 66--73 so fresh values above 999.999 retain their stated 0.001 precision. The provenance field consequently occupies bytes 75--181, and every data row is exactly 181 bytes.
+
+19. Rebuilt the ordinary-image measurements with a source-excluded local scaled MAD measured in a fixed 10-BMAJ square aperture, with at least 50 effective independent beams. This was the historical seven-product admission checkpoint; the complete Task 28 census in item 20 supersedes its row counts.
+
+20. Completed the filename-neutral Task 28 archive census. The reviewed input inventory contains 544 products and the authoritative fitter produces 495 publication rows plus a 498-row diagnostic-noise ledger. Publication assembly removes one superseded IC2560 reduction, excludes nine bandwidth-smeared VLA measurements, and adds 16 literature-only measurements, yielding 485 image-based plus 16 literature-only measurements (501 total). The 498 rows belonging to the 21-source sample generate 14,193 within-source pairs; the three NGC5495 measurements remain catalog-only. The selected 230 GHz comparison contains 12 detections and seven upper limits from 11 ALMA, seven SMA, and one NOEMA measurement. NGC4945 is remeasured at source 18 in all 45 admitted ALMA products.

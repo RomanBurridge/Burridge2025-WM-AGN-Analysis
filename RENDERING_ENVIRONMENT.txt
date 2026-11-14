@@ -1,0 +1,133 @@
+Exact publication rendering environment
+=======================================
+
+Purpose and scope
+-----------------
+
+The publication figure builders are deterministic only when their raster and
+font-rendering stack is also fixed.  This file specifies the environment used
+to rebuild the seven checked-in PNGs and the BHS PDF in this release.
+
+These are rendering requirements.  They are separate from the fitting, CASA
+and MIR requirements in requirements.txt, constraints-fitting.txt,
+requirements-casa-linux-cp312.txt and requirements-mir.txt.  Do not replace
+the fitting environment with this minimal renderer.
+
+Verified runtime
+----------------
+
+- Ubuntu 24.04 (Noble), amd64
+- official Ubuntu snapshot:
+  https://snapshot.ubuntu.com/ubuntu/20260826T000000Z/
+- Python 3.12.3 (Ubuntu package python3 3.12.3-0ubuntu2.1)
+- Matplotlib 3.6.3
+- NumPy 1.26.4
+- SciPy 1.11.4
+- Pillow 10.2.0
+- FreeType 2.13.2, system build
+
+Exact Ubuntu rendering packages
+-------------------------------
+
+- python3-matplotlib 3.6.3-1ubuntu5
+- python3-numpy 1:1.26.4+ds-6ubuntu1
+- python3-scipy 1.11.4-6build1
+- python3-pil 10.2.0-1ubuntu1.2
+- python3-contourpy 1.0.7-2build1
+- python3-cycler 0.11.0-2
+- python3-dateutil 2.8.2-3ubuntu1
+- python3-fonttools 4.46.0-1build2
+- python3-kiwisolver 1.4.4-2build1
+- python3-packaging 24.0-1
+- python3-pyparsing 3.1.1-1
+- python3-six 1.16.0-4
+- libfreetype6 2.13.2+dfsg-1ubuntu0.1
+- fontconfig-config 2.15.0-1.1ubuntu2
+- fonts-dejavu-core 2.37-8
+
+Renderer and font state
+-----------------------
+
+- Backend selected by both builders: Agg.
+- System /etc/matplotlibrc SHA-256:
+  29258b878aefebab4f0d888ab9bbc1fa8a28eb544d344c03ca14600efa543665
+- text.hinting=force_autohint
+- text.hinting_factor=8
+- savefig.bbox=None
+- savefig.pad_inches=0.1
+- Matplotlib DejaVuSans.ttf SHA-256:
+  3fdf69cabf06049ea70a00b5919340e2ce1e6d02b0cc3c4b44fb6801bd1e0d22
+- Matplotlib DejaVuSans-Bold.ttf SHA-256:
+  b184b89e3c1075f22f6b71575b6fc20d4972b3cfd3b23322ca6fd596dcaef167
+- Matplotlib DejaVuSans-Oblique.ttf SHA-256:
+  ccdf74b350f11fd3dd5774de50e5e6346a1a5da1f5b7d5fb83590665e97a5213
+
+No private font or cache is required.  The final check used empty task-specific
+XDG cache and configuration directories.  Matplotlib generated its own cache,
+resolved regular, bold and oblique text to the three fonts above, and used no
+user matplotlibrc or MPLCONFIGDIR override.
+
+Portable invocation
+-------------------
+
+The host requires bubblewrap (`bwrap`).  Supply an independently prepared
+read-only Ubuntu rootfs and a new output directory that does not yet exist:
+
+  python3 scripts/render_publication.py \
+    --rootfs /path/to/ubuntu2404-render-rootfs \
+    --release . \
+    --output /path/to/new-render-output
+
+The script mounts the release read-only, gives only the output directory write
+access, creates fresh XDG cache/config directories, checks the runtime versions
+above, runs the unchanged BHS and SED builders, requires seven PNGs and one
+PDF, and verifies that the scientific input hashes did not change.
+
+Reconstructing the tested rootfs
+--------------------------------
+
+The tested rootfs was constructed from Canonical's official archive:
+
+  https://cdimage.ubuntu.com/ubuntu-base/releases/24.04.3/release/
+  ubuntu-base-24.04.3-base-amd64.tar.gz
+
+Archive SHA-256:
+
+  6bc2cde3930ad088b3bb46fa45279e96d25bc3810f209850ecbe4722711874f9
+
+After unpacking the base archive into a new rootfs, the apt source was pinned
+in deb822 form to:
+
+  Types: deb
+  URIs: https://snapshot.ubuntu.com/ubuntu/20260826T000000Z/
+  Suites: noble noble-updates
+  Components: main universe
+  Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  Check-Valid-Until: no
+
+and a second stanza with the same URI, components, key and validity setting,
+but `Suites: noble-security`.  Installing the versioned packages listed above
+from that snapshot produced the tested runtime.  This reconstruction recipe is
+recorded from the successful historical setup; it was not independently
+reexecuted during the final candidate check.  The already constructed rootfs
+was independently exercised again with fresh caches, and all publication
+artifact tests passed.
+
+What was verified
+-----------------
+
+- The candidate BHS PDF and PNG are byte-identical to fresh output from the
+  candidate builder in this locked environment.
+- Repeated fresh builds are byte-identical.
+- All six SED PNGs are byte-identical to the accepted-paper copies.
+- The candidate BHS PNG has the accepted dimensions and scientific layout but
+  is not pixel-identical to the separately saved accepted-paper PNG: 80 pixels
+  (88 channel values) differ.  This known presentation-copy difference is not
+  described as an exact accepted-image match.
+- The intended candidate BHS figure omits plotted error bars while retaining
+  the audited uncertainty values in the data loader.
+
+The locked final presentation suite ran 86 tests: 83 passed and three were
+skipped, with zero failures or errors.  The skips occurred only because the
+self-contained release intentionally does not include the adjacent manuscript
+revision package.

@@ -1,0 +1,3 @@
+# AAS MRT rows are deliberately padded through byte 180.
+analysis/multi_freq_from_archive/machinetables/fitsummary_aas_mrt.txt whitespace=-blank-at-eol
+analysis/multi_freq_from_archive/machinetables/AAS72796R2_datafile2_corrected.txt whitespace=-blank-at-eol

@@ -1,0 +1,7 @@
+source_key,q16_theta_g_nas,q50_theta_g_nas,q84_theta_g_nas,systematic_fraction,provenance
+NGC4258,51.7732,51.8271,51.8862,0.01,D_Pesce_private_communication_2026-08-17
+NGC5765b,3.6373,3.6493,3.6623,0.01,D_Pesce_private_communication_2026-08-17
+CGCG074-064,2.7101,2.7277,2.7474,0.01,D_Pesce_private_communication_2026-08-17
+NGC6264,2.0596,2.0646,2.0701,0.01,D_Pesce_private_communication_2026-08-17
+UGC3789,2.2736,2.2811,2.2892,0.01,D_Pesce_private_communication_2026-08-17
+NGC6323,0.9135,0.9189,0.9248,0.01,D_Pesce_private_communication_2026-08-17
