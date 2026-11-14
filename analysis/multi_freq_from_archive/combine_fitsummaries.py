@@ -20,6 +20,9 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
+from continuum_measurements import calendar_date_sort_key, portable_release_product
+from vla_bandwidth_smearing import BandwidthSmearingExclusion, apply_policy, load_policy
+
 
 SORTED_SUFFIX = "_fitsummary_fixedtochosen_sorted.txt"
 WITHERRORS_SUFFIX = "_fitsummary_fixedtochosen_witherrors.txt"
@@ -35,23 +38,6 @@ EXCLUDED_ROWS = {
 
 def summary_prefix(path: Path, suffix: str) -> str:
     return path.name[: -len(suffix)]
-
-
-def date_key(value: str) -> float:
-    value = str(value).strip().strip(",")
-    if value.upper() == "NA" or not value:
-        return -1.0
-    parts = value.split("/")
-    if len(parts) != 3:
-        return -1.0
-    try:
-        year = float(parts[0])
-        month = float(parts[1])
-        day_part = parts[2].split("_")[0]
-        day = float(day_part)
-    except ValueError:
-        return -1.0
-    return year + month / 12.0 + day / 365.0
 
 
 def float_key(value: str) -> float:
@@ -183,11 +169,15 @@ def collect_rows(base_dir: Path) -> tuple[list[list[str]], list[str]]:
     return rows, sources_used
 
 
-def deduplicate_rows(rows: list[list[str]]) -> list[list[str]]:
+def deduplicate_rows(
+    rows: list[list[str]],
+    bandwidth_smearing_policy: list[BandwidthSmearingExclusion] | None = None,
+) -> list[list[str]]:
     seen: set[tuple[str, ...]] = set()
     unique_rows: list[list[str]] = []
     for row in rows:
         clean = [str(item).rstrip("\n") for item in row[:8]]
+        clean[7] = portable_release_product(clean[7])
         if (clean[0], clean[1], clean[4]) in EXCLUDED_ROWS:
             continue
         key = tuple(clean)
@@ -195,12 +185,18 @@ def deduplicate_rows(rows: list[list[str]]) -> list[list[str]]:
             continue
         seen.add(key)
         unique_rows.append(clean)
+    if bandwidth_smearing_policy is not None:
+        unique_rows, _ = apply_policy(unique_rows, bandwidth_smearing_policy)
     return unique_rows
 
 
-def write_combined(rows: list[list[str]], output_path: Path) -> None:
+def write_combined(
+    rows: list[list[str]],
+    output_path: Path,
+    bandwidth_smearing_policy: list[BandwidthSmearingExclusion] | None = None,
+) -> None:
     grouped: dict[str, list[list[str]]] = defaultdict(list)
-    for row in deduplicate_rows(rows):
+    for row in deduplicate_rows(rows, bandwidth_smearing_policy):
         clean = [str(item) for item in row[:8]]
         if not clean[7].endswith("\n"):
             clean[7] = clean[7] + "\n"
@@ -214,8 +210,9 @@ def write_combined(rows: list[list[str]], output_path: Path) -> None:
                 grouped[source],
                 key=lambda row: (
                     float_key(row[2]),
-                    date_key(row[4]),
+                    calendar_date_sort_key(row[4]),
                     float_key(row[5]),
+                    portable_release_product(row[7]),
                 ),
             )
             for row in source_rows:
@@ -238,6 +235,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="Override output path. Defaults to fitsumfiles/sorted/fitsummary_fixtochosen_sorted.txt under --base-dir.",
     )
     parser.add_argument(
+        "--bandwidth-smearing-policy",
+        default=None,
+        type=Path,
+        help=(
+            "Audited VLA bandwidth-smearing exclusions. Defaults to "
+            "continuum_bandwidth_smearing_exclusion_policy.csv under --base-dir."
+        ),
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Only report which files would be combined.",
@@ -255,6 +261,12 @@ def main() -> int:
         if args.output is not None
         else base_dir / "fitsumfiles" / "sorted" / OUTPUT_NAME
     )
+    bandwidth_smearing_policy_path = (
+        args.bandwidth_smearing_policy.resolve()
+        if args.bandwidth_smearing_policy is not None
+        else base_dir / "continuum_bandwidth_smearing_exclusion_policy.csv"
+    )
+    bandwidth_smearing_policy = load_policy(bandwidth_smearing_policy_path)
 
     rows, sources_used = collect_rows(base_dir)
     if not rows:
@@ -268,7 +280,11 @@ def main() -> int:
     if args.dry_run:
         return 0
 
-    write_combined(rows, output_path)
+    write_combined(rows, output_path, bandwidth_smearing_policy)
+    print(
+        f"Applied {len(bandwidth_smearing_policy)} VLA bandwidth-smearing "
+        f"exclusions from {bandwidth_smearing_policy_path}"
+    )
     print(f"Wrote {output_path}")
     return 0
 

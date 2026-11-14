@@ -4,6 +4,7 @@ import argparse
 import ast
 import csv
 import math
+import re
 from pathlib import Path
 from typing import Iterable
 
@@ -14,6 +15,8 @@ ALPHA_MINUS_1P0 = -1.0
 ALPHA_MINUS_0P4 = -0.4
 ALPHA_MODEL_RANGE = "[-1.0, -0.4]"
 FAR_NU0_RELATIVE_THRESHOLD = 0.3
+SOURCE_ROLE_COLUMNS = ("table_source", "source_key", "role", "note")
+DEFAULT_SOURCE_ROLES_PATH = Path(__file__).resolve().with_name("continuum_source_roles.csv")
 
 
 def linear_to_log_uncertainty(lin_x: float, lin_delta_x: float) -> float:
@@ -64,8 +67,55 @@ def _parse_record(line: str) -> dict[str, object]:
         "beam_arcsec": _parse_beam(row[5]),
         "snr": snr,
         "sigma_mjy": sigma_mjy,
-        "reference": row[7],
+        "reference": str(row[7]).strip(),
     }
+
+
+def _identifier_token(value: object) -> str:
+    return re.sub(r"[^A-Za-z0-9.+-]+", "-", str(value).strip()).strip("-") or "NA"
+
+
+def _reference_product_id(record: dict[str, object]) -> str:
+    """Return a portable product label without embedding an absolute path."""
+
+    reference = str(record.get("reference", "")).strip().replace("\\", "/")
+    telescope = str(record.get("telescope", "")).upper()
+    parts = [part for part in reference.split("/") if part]
+
+    if telescope == "SMA" and parts:
+        track = next((part for part in parts if re.fullmatch(r"\d{6}_128", part)), "SMA-track")
+        flag = next((part for part in parts if re.fullmatch(r"flag\d+_cal\d+", part)), "flag-NA")
+        return _identifier_token(f"{track}-{flag}-{parts[-1]}")
+
+    if reference.startswith(("ALMA/", "VLA/")) or "/" in reference:
+        return _identifier_token(parts[-1] if parts else reference)
+    return _identifier_token(reference)
+
+
+def portable_reference(record: dict[str, object]) -> str:
+    """Return provenance without leaking an author-local absolute path."""
+
+    reference = str(record.get("reference", "")).strip().replace("\\", "/")
+    if "/analysis/" in reference:
+        return "analysis/" + reference.split("/analysis/", 1)[1]
+    if reference.startswith("/"):
+        return Path(reference).name
+    return reference
+
+
+def stable_observation_id(record: dict[str, object]) -> str:
+    """Build an ID independent of the presentation-only ``_N`` date suffix."""
+
+    date = str(record.get("date", "NA")).partition("_")[0].replace("/", "-")
+    frequency = f"{float(record['freq_ghz']):.5f}".rstrip("0").rstrip(".")
+    fields = (
+        record.get("Source", "NA"),
+        record.get("telescope", "NA"),
+        date,
+        f"{frequency}GHz",
+        _reference_product_id(record),
+    )
+    return "|".join(_identifier_token(field) for field in fields)
 
 
 def load_fitsummary_records(source_text_path: str | Path) -> list[dict[str, object]]:
@@ -80,21 +130,68 @@ def load_fitsummary_records(source_text_path: str | Path) -> list[dict[str, obje
     return records
 
 
+def load_source_roles(path: str | Path) -> dict[str, str]:
+    """Load the 21-source sample and the separate NGC 5495 catalog role."""
+    role_path = Path(path)
+    with role_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if tuple(reader.fieldnames or ()) != SOURCE_ROLE_COLUMNS:
+            raise ValueError(
+                f"{role_path}: expected columns {SOURCE_ROLE_COLUMNS!r}, "
+                f"found {reader.fieldnames!r}"
+            )
+        rows = list(reader)
+
+    roles: dict[str, str] = {}
+    source_keys: set[str] = set()
+    for line_number, row in enumerate(rows, 2):
+        if any(row.get(name) is None for name in SOURCE_ROLE_COLUMNS):
+            raise ValueError(f"{role_path}:{line_number}: missing source-role field")
+        clean = {name: str(row[name]).strip() for name in SOURCE_ROLE_COLUMNS}
+        if any(not value for value in clean.values()):
+            raise ValueError(f"{role_path}:{line_number}: blank source-role field")
+        table_source = clean["table_source"]
+        source_key = clean["source_key"]
+        role = clean["role"]
+        if table_source in roles:
+            raise ValueError(
+                f"{role_path}:{line_number}: duplicate table_source {table_source!r}"
+            )
+        if source_key in source_keys:
+            raise ValueError(
+                f"{role_path}:{line_number}: duplicate source_key {source_key!r}"
+            )
+        if role not in {"sample", "ancillary"}:
+            raise ValueError(f"{role_path}:{line_number}: invalid source role {role!r}")
+        roles[table_source] = role
+        source_keys.add(source_key)
+
+    if sum(role == "sample" for role in roles.values()) != 21:
+        raise ValueError(f"{role_path}: expected exactly 21 sample sources")
+    ancillary = [source for source, role in roles.items() if role == "ancillary"]
+    if ancillary != ["NGC5495"]:
+        raise ValueError(f"{role_path}: NGC5495 must be the sole ancillary source")
+    return roles
+
+
 def select_chosen_frequency_records(
     records: Iterable[dict[str, object]],
     freq_min_ghz: float = 200.0,
     freq_max_ghz: float = 400.0,
+    allowed_sources: set[str] | None = None,
 ) -> dict[str, dict[str, object]]:
     grouped: dict[str, dict[str, list[dict[str, object]]]] = {}
 
     for record in records:
+        source = str(record["Source"])
+        if allowed_sources is not None and source not in allowed_sources:
+            continue
         freq_ghz = float(record["freq_ghz"])
         beam_arcsec = record["beam_arcsec"]
         if beam_arcsec is None:
             continue
         if not (freq_min_ghz < freq_ghz < freq_max_ghz):
             continue
-        source = str(record["Source"])
         grouped.setdefault(source, {"detections": [], "upper_limits": []})
         if bool(record["is_upper_limit"]):
             grouped[source]["upper_limits"].append(record)
@@ -151,6 +248,8 @@ def _compute_s230_fields(record: dict[str, object]) -> dict[str, object]:
         "nu0_telescope": record["telescope"],
         "nu0_date": record["date"],
         "nu0_beam_arcsec": record["beam_arcsec"],
+        "nu0_reference": portable_reference(record),
+        "nu0_observation_id": stable_observation_id(record),
     }
 
 
@@ -158,9 +257,19 @@ def build_s230_reference_rows(
     source_text_path: str | Path,
     output_csv_path: str | Path | None = None,
     verbose: bool = False,
+    source_roles_path: str | Path = DEFAULT_SOURCE_ROLES_PATH,
 ) -> list[dict[str, object]]:
     records = load_fitsummary_records(source_text_path)
-    chosen = select_chosen_frequency_records(records)
+    source_roles = load_source_roles(source_roles_path)
+    actual_sources = {str(record["Source"]) for record in records}
+    if actual_sources != set(source_roles):
+        missing = sorted(set(source_roles) - actual_sources, key=str.casefold)
+        extra = sorted(actual_sources - set(source_roles), key=str.casefold)
+        raise ValueError(f"continuum source-role mismatch: missing={missing}, extra={extra}")
+    sample_sources = {
+        source for source, role in source_roles.items() if role == "sample"
+    }
+    chosen = select_chosen_frequency_records(records, allowed_sources=sample_sources)
     rows = [_compute_s230_fields(chosen[source]) for source in sorted(chosen, key=str.upper)]
 
     if output_csv_path is not None:
@@ -188,6 +297,11 @@ def write_s230_reference_csv(rows: list[dict[str, object]], output_csv_path: str
         "nu0_GHz",
         "S_nu0_mJy",
         "sigma_S_nu0_mJy",
+        "nu0_telescope",
+        "nu0_date",
+        "nu0_beam_arcsec",
+        "nu0_reference",
+        "nu0_observation_id",
         "alpha_fid",
         "S_230_mJy",
         "sigma_S_230_mJy",
@@ -201,7 +315,7 @@ def write_s230_reference_csv(rows: list[dict[str, object]], output_csv_path: str
     ]
 
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({name: _format_csv_value(row.get(name)) for name in fieldnames})
@@ -216,7 +330,7 @@ def _fmt(value, precision: int = 2) -> str:
 
 
 def print_s230_reference_table(rows: list[dict[str, object]]) -> None:
-    print("S230 chosen-frequency extrapolation comparison")
+    print("S230 reference-measurement extrapolation comparison")
     header = (
         f"{'Source':<14} "
         f"{'status':<12} "
@@ -262,8 +376,8 @@ def print_diagnostic_warnings(rows: list[dict[str, object]]) -> None:
 
     if any(str(row["Source"]).upper() == "NGC4258" for row in rows):
         warnings.append(
-            "NOTE: NGC4258 uses the selected 200--400 GHz anchor record in this table. "
-            "Check any manuscript prose against the adopted anchor table before submission."
+            "NOTE: NGC4258 uses the selected 200--400 GHz reference measurement in this table. "
+            "Check any manuscript prose against the adopted reference table before submission."
         )
 
     if not warnings:
@@ -277,7 +391,7 @@ def print_diagnostic_warnings(rows: list[dict[str, object]]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build a shared 230 GHz chosen-frequency extrapolation comparison table."
+        description="Build a shared 230 GHz reference-measurement extrapolation table."
     )
     parser.add_argument(
         "--source-text",
@@ -289,12 +403,18 @@ def main() -> None:
         default="machinetables/S230_extrapolation_comparison.csv",
         help="Path to the output comparison CSV.",
     )
+    parser.add_argument(
+        "--source-roles",
+        default=str(DEFAULT_SOURCE_ROLES_PATH),
+        help="Path to the continuum source-role manifest.",
+    )
     args = parser.parse_args()
 
     rows = build_s230_reference_rows(
         source_text_path=args.source_text,
         output_csv_path=args.output,
         verbose=False,
+        source_roles_path=args.source_roles,
     )
     output_path = Path(args.output).resolve()
     print_s230_reference_table(rows)

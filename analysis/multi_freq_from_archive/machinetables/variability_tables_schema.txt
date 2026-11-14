@@ -1,0 +1,73 @@
+Variability and correlations machine-table schema
+
+Files
+-----
+variability_machine.txt
+    Detection--detection pairs retained by the historical matched-pair screen.
+    Screening is strict:
+    frequency_symmetric_difference_pct < 1.4 and
+    beam_geometric_mean_symmetric_difference_pct < 2.6, and both fluxes must
+    be detections with a calculable symmetric contrast.
+
+correlations_machine.txt
+    Every unordered, within-source measurement pair for the 21-source analysis
+    sample, including upper-limit pairs, pairs containing beam ranges,
+    same-day pairs, and likely duplicates. NGC 5495 is outside these
+    sample-level calculations under continuum_source_roles.csv.
+
+variability_likely_duplicates.txt
+    Records with the same source, telescope, frequency, flux/censoring status,
+    calendar date, and beam metadata. These are candidates for manual review;
+    they are flagged in, and never silently removed from, either pair table.
+    The audited older IC 2560 NVAS reduction is excluded before this stage and
+    is preserved with the retained reduction in continuum_product_aliases.csv;
+    the three failed NGC 4258 NVAS reductions are preserved in
+    continuum_product_exclusions.csv. Two are replaced by explicitly identified
+    Doi et al. (2013) literature measurements, while the 2004-05-22 AH0847
+    artifact has no replacement. This file is a safety-net report for any
+    remaining candidate duplicates.
+
+Conventions
+-----------
+All files are UTF-8 tab-separated tables with a header row.
+
+The symmetric percentage difference of positive x and y is
+    200 * abs(x - y) / (x + y).
+
+For two detections, flux_contrast_relation is ``exact``. Its uncertainty is
+the first-order propagation of the two flux-density measurement uncertainties
+while treating them as independent. For image-fit inputs, the measurement
+uncertainty is the fitted component flux density divided by the final SNR from
+the local scaled-MAD classifier; literature-input errors are carried as
+reported.
+
+For one detection and one 3-sigma upper limit U below that detection x,
+flux_contrast_relation is ``lower_bound`` and the reported contrast is
+    200 * (x - U) / (x + U).
+No uncertainty is attached to this censored bound. If U is not below x, or if
+both values are upper limits, the relation is ``uninformative``. Unavailable
+fields are serialized as the explicit string ``NA``.
+
+comparison_class is ``same_day_repeat``, ``different_day``, or
+``date_unknown``. Date suffixes such as _1 and _2 identify input records but
+do not turn the same calendar day into a variability time baseline.
+``temporal_interpretation`` therefore labels same-day rows as non-temporal and
+does not call different-day rows confirmed variability.
+
+The scalar beam values in the fit summary are the geometric-mean synthesized
+beam FWHM values used by the selection. Literature ranges such as 0.19-0.50
+arcsec are retained in the input/min/max columns, have an unavailable scalar
+value serialized as ``NA``, and are not eligible for beam-threshold selection.
+
+Stable record and pair IDs are SHA-256-derived identifiers made from the input
+content, rather than row numbers, so reordering the input does not change them.
+The product1/product2 fields preserve the archive product or literature
+identifier that generated each record. Author-local SMA paths are exported as
+portable identifiers of the form SMA/track/[clean/]niter/flag/source-image.
+
+This screening table does not scale measurements to one exact frequency and
+does not match beam shape, position angle, uv coverage, aperture, or spatial
+filtering. Its propagated measurement-scale terms omit absolute
+flux-calibration systematics and within-dataset covariance. It is a diagnostic
+matched-pair inventory, not a complete quantitative variability measurement or
+a demonstrated null test.

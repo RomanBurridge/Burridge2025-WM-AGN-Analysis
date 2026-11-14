@@ -1,0 +1,4 @@
+# Optional ordinary-Python MIR-to-MS conversion (not the CASA CLI bootstrap).
+-r requirements.txt
+pyuvdata[casa]==3.2.8
+python-casacore==3.8.1

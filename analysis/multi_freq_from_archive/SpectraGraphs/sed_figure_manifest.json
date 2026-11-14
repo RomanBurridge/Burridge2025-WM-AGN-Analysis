@@ -1,0 +1,103 @@
+{
+  "artifacts": {
+    "Circinus": {
+      "detections": 53,
+      "distance_mpc": 4.2,
+      "distance_unc_mpc": 0.8,
+      "filename": "Circinus_Spectra.png",
+      "rows": 53,
+      "scale_display": "$1^{\\prime\\prime} = 0.0204\\,\\pm\\,0.0039\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.02036217460660051,
+      "scale_unc_kpc_per_arcsec": 0.0038785094488762877,
+      "sha256": "3c797c93bdf996134174853c9964f50d1c6bc13648b8586d1cc4204eb5fdad6e",
+      "upper_limits": 0
+    },
+    "NGC1068": {
+      "detections": 88,
+      "distance_mpc": 10.72,
+      "distance_unc_mpc": 0.52,
+      "filename": "NGC1068_Spectra.png",
+      "rows": 88,
+      "scale_display": "$1^{\\prime\\prime} = 0.0520\\,\\pm\\,0.0025\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.051972026614942254,
+      "scale_unc_kpc_per_arcsec": 0.002521031141769587,
+      "sha256": "347906bf2cf19fe7c5d980d0cc6937efd52d8008f4ded3103d3f2a92493c4e8f",
+      "upper_limits": 0
+    },
+    "NGC1194": {
+      "detections": 8,
+      "distance_mpc": 52.55209742895805,
+      "distance_unc_mpc": 4.0046025014515045,
+      "filename": "NGC1194_Spectra.png",
+      "rows": 9,
+      "scale_display": "$1^{\\prime\\prime} = 0.255\\,\\pm\\,0.019\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.2547797580456013,
+      "scale_unc_kpc_per_arcsec": 0.0194148608010916,
+      "sha256": "410c05bf8d0b61a487442827385dd618ac5c96cd332407093f04672d8d66141a",
+      "upper_limits": 1
+    },
+    "NGC3079": {
+      "detections": 79,
+      "distance_mpc": 17.3,
+      "distance_unc_mpc": 1.5,
+      "filename": "NGC3079_Spectra.png",
+      "rows": 79,
+      "scale_display": "$1^{\\prime\\prime} = 0.0839\\,\\pm\\,0.0073\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.08387276683194972,
+      "scale_unc_kpc_per_arcsec": 0.007272205216643039,
+      "sha256": "73efddf740ce211f3c0c2cf0e38e1e75203258cefef350da147948efc027a80b",
+      "upper_limits": 0
+    },
+    "NGC4258": {
+      "detections": 82,
+      "distance_mpc": 7.576,
+      "distance_unc_mpc": 0.11180339887498948,
+      "filename": "NGC4258_Spectra.png",
+      "rows": 82,
+      "scale_display": "$1^{\\prime\\prime} = 0.03673\\,\\pm\\,0.00054\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.03672948448085844,
+      "scale_unc_kpc_per_arcsec": 0.000542038173691414,
+      "sha256": "bbf6e4231c4945afca6b2b6ae538775a0ebc07442fb216364ed0eabae9098f1d",
+      "upper_limits": 0
+    },
+    "NGC4945": {
+      "detections": 45,
+      "distance_mpc": 3.7,
+      "distance_unc_mpc": null,
+      "filename": "NGC4945_Spectra.png",
+      "rows": 45,
+      "scale_display": "$1^{\\prime\\prime} = 0.0179\\ \\mathrm{kpc}$",
+      "scale_kpc_per_arcsec": 0.017938106201052833,
+      "scale_unc_kpc_per_arcsec": null,
+      "sha256": "9c45f9a5edcdd3dacf23e09fc0e6fd48364583ef23cd935e2565d77022daaef2",
+      "upper_limits": 0
+    }
+  },
+  "axis_sources": [
+    "NGC4258",
+    "NGC1194",
+    "NGC1068",
+    "NGC3079",
+    "NGC4945",
+    "Circinus",
+    "NGC2273",
+    "NGC4388",
+    "NGC2960",
+    "UGC3789"
+  ],
+  "beam_color_limits_log10_arcsec": [
+    -2.0,
+    2.0
+  ],
+  "distance_table": "analysis/CountingBHS_and_Spectra/BHS_params.csv",
+  "flux_density_limits_log10_mjy": [
+    -1.25,
+    4.25
+  ],
+  "frequency_limits_log10_ghz": [
+    -0.15000000000000002,
+    3.15
+  ],
+  "schema_version": 2,
+  "source_table": "fitsumfiles/final/fitsummary_final_withextras.txt"
+}

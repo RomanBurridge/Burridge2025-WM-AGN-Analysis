@@ -1,0 +1,125 @@
+{
+  "schema_version": 2,
+  "record_id": "ngc2960-alma-85p88-frame-rms-v1",
+  "status": "historical_frame_rms_evidence_superseded_by_adjudicated_scaled_mad",
+  "source": "NGC2960",
+  "measurement": {
+    "telescope": "ALMA",
+    "frequency_ghz": 85.88,
+    "date_label": "2016/06/27_1",
+    "classification": "upper_limit_3sigma",
+    "scope": "historical_pre_scaled_mad_frame_rms_decision",
+    "old_displayed_flux_field": "0.45*",
+    "accepted_displayed_flux_field": "0.47*",
+    "snr_field": "NA"
+  },
+  "input": {
+    "recovery_record_id": "continuum-3704799e392d20c051a0",
+    "product": "ALMA/NGC2960/member.uid___A001_X5a3_X167.ari_l.Mrk_1419_sci.spw0_1_2_3_85885MHz.12m.cont.I.pbcor.fits",
+    "member_ous_uid": "uid://A001/X5a3/X167",
+    "size_bytes": 1013760,
+    "sha256": "c3c8de0caef8bf7dd35e23205162ff5020b51e1eb0da1d64f8de4cfb0ea8397b",
+    "radesys": "ICRS",
+    "brightness_unit": "Jy/beam",
+    "beam_major_arcsec": 2.10933709144596,
+    "beam_minor_arcsec": 1.12266170978544,
+    "beam_position_angle_deg": -62.29847717285,
+    "pixel_scale_arcsec": 0.23000000071122
+  },
+  "coordinate_frame_evidence": {
+    "catalog_frame": "J2000",
+    "catalog_ra": "09:40:36.386",
+    "catalog_dec": "+03:34:37.308",
+    "catalog_ra_deg": 145.15160833333331,
+    "catalog_dec_deg": 3.5770299999999997,
+    "image_frame": "ICRS",
+    "converted_ra_deg": 145.15160216551456,
+    "converted_dec_deg": 3.5770352330739077,
+    "j2000_to_icrs_shift_arcsec": 0.029086344698443088
+  },
+  "region_evidence": {
+    "shape": "unrotated_centerbox",
+    "full_width_arcsec": 3.0,
+    "width_rule": "min(20 * restoring_beam_major_fwhm, 3 arcsec)",
+    "calculation_basis": "zero-based FITS pixel-center reconstruction; RMS = sqrt(mean(pixel_value^2)); Jy/beam converted to mJy/beam before multiplying by 3",
+    "old_wrong_frame_region": {
+      "description": "J2000 numeric coordinate pair was passed to the native-ICRS image region without conversion",
+      "center_pixel_x": 249.3466258115684,
+      "center_pixel_y": 251.51644327070548,
+      "inclusive_x_pixels": [243, 255],
+      "inclusive_y_pixels": [245, 258],
+      "pixel_count": 182,
+      "rms_mjy_per_beam": 0.15090873057488352,
+      "three_sigma_mjy": 0.45272619172465056,
+      "formatted_flux_field": "0.45*"
+    },
+    "accepted_native_frame_region": {
+      "description": "J2000 catalog position was transformed coherently to the image-native ICRS frame",
+      "center_pixel_x": 249.4429775095145,
+      "center_pixel_y": 251.598352249356,
+      "inclusive_x_pixels": [243, 255],
+      "inclusive_y_pixels": [246, 258],
+      "pixel_count": 169,
+      "rms_mjy_per_beam": 0.1557320647407323,
+      "three_sigma_mjy": 0.46719619422219694,
+      "formatted_flux_field": "0.47*"
+    }
+  },
+  "fit_invariance": {
+    "estimate_peak_jy_per_beam": 0.0003309044404886663,
+    "estimate_pixel_x": 249,
+    "estimate_pixel_y": 251,
+    "prior_and_current_model_table_f0_sha256": "36677be3c9d89e35c9dd19ffc41b228f8e0b5fe2be2464e4faf49aa6ae2a03ba",
+    "interpretation": "The input, beam, estimate, and fitted CASA model are unchanged; only the upper-limit RMS region's celestial-frame routing changes."
+  },
+  "decision": {
+    "accepted_flux_field": "0.47*",
+    "correction_reason": "header_aware_target_frame",
+    "reason": "The image declares ICRS, so the full fitting square must use the coherently transformed ICRS coordinate pair.",
+    "classification_changed": false,
+    "selected_s230_observation_changed": false,
+    "selected_s230_observation": "SMA 225.53 GHz 5.64*",
+    "scientific_story_changed": false
+  },
+  "task28_supersession": {
+    "scope": "current_selected_reference_after_task28_archive_audit",
+    "historical_decision_preserved": true,
+    "selected_s230_observation": "ALMA 316.43 GHz upper limit",
+    "selected_s230_mjy": 0.2250387857,
+    "interpretation": "The selected_s230_observation_changed field above records the original frame-only correction decision. Task 28 later admitted a smaller-beam ALMA product and independently superseded the historical SMA reference measurement."
+  },
+  "downstream_regeneration": {
+    "status": "final_scaled_mad_release_and_manuscript_synchronized",
+    "historical_flux_field": "0.47*",
+    "current_canonical_flux_field": "0.39",
+    "superseding_ledger": {
+      "path": "reviewed_current_to_generated_deltas.csv",
+      "sha256": "f3093fe1437438ade2dd96cc6aa2177fd9a37487d0d62194139f628b65953909"
+    },
+    "required_release_products": [
+      "fitsumfiles/sorted/fitsummary_fixtochosen_sorted.txt",
+      "fitsumfiles/final/fitsummary_final_withextras.txt",
+      "machinetables/fitsummary_machine.txt",
+      "machinetables/fitsummary_aas_mrt.txt",
+      "machinetables/AAS72796R2_datafile2_corrected.txt",
+      "machinetables/correlations_machine.txt"
+    ],
+    "release_product_sha256": {
+      "fitsumfiles/sorted/fitsummary_fixtochosen_sorted.txt": "1bb7db5304ccdfa154a07f691cfa8f90ea40755f05c7c60fb7dca13c39cbf75b",
+      "fitsumfiles/final/fitsummary_final_withextras.txt": "fe14f16400a3e880176d34202033e037630b3b8911a159e56cb9a5f65c055a3a",
+      "machinetables/fitsummary_machine.txt": "7b2cc7ffcedf35bf0e791946213288a75c78b520d98f873895535b29c9b5f194",
+      "machinetables/fitsummary_aas_mrt.txt": "1498cba1c6a42acea20be17ccf9c4c97e92239ac43d2a679c32af2478a38a688",
+      "machinetables/AAS72796R2_datafile2_corrected.txt": "1498cba1c6a42acea20be17ccf9c4c97e92239ac43d2a679c32af2478a38a688",
+      "machinetables/correlations_machine.txt": "9e1d98aa45ea1bb544607c1ce6c6db229c21c7ab06fa827f6bdc70f04ed4ed59"
+    },
+    "required_manuscript_products": [
+      "tab2.txt",
+      "datafile2.txt"
+    ],
+    "manuscript_product_sha256": {
+      "tab2.txt": "7b2cc7ffcedf35bf0e791946213288a75c78b520d98f873895535b29c9b5f194",
+      "datafile2.txt": "1498cba1c6a42acea20be17ccf9c4c97e92239ac43d2a679c32af2478a38a688"
+    },
+    "remaining_action": null
+  }
+}

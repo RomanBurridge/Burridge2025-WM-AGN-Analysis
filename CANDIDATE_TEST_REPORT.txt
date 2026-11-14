@@ -1,0 +1,73 @@
+WM-AGN v1.0.11-rc1: candidate validation
+Validated 2026-10-29 UTC. Unpublished; no new DOI is assigned.
+
+Reference: the accepted PRIVATE ApJ manuscript AAS72796R3 / AE8A42,
+not the older public arXiv manuscript, and the preserved v1.0.10 release.
+
+Outcome
+The repaired workflow reproduces the accepted reported results from the
+frozen historical image products. No adopted measurements, uncertainties,
+classifications, reference selections, spectral slopes or physical models
+were changed. The original release, paper and telescope inputs are preserved.
+
+Actual checks completed
+
+1. Installation: PASS. A new CPython 3.12.3 environment installed the supplied
+   requirements; pip check, actual CASA/fitter imports, analysisUtils and an
+   ALMA observatory lookup succeeded. All 152 final runtime/analysis pins match
+   installed versions. The Linux CASA wheel and analysisUtils archive are
+   hash-pinned. Installation-tool pip 25.1.1 is documented separately.
+
+2. Full workflow: PASS. All four general fitting passes and the actual
+   NGC 4945 apply/check stages completed, without recorded-value replay.
+   The immutable 27-row/66-row history initialized a new workspace correctly;
+   the final 45 measurements and 84 correction records passed the original
+   guards. A further NEW prepare after evidence promotion also passed.
+   The runner's exit 1 was its deliberate historical-baseline review stop,
+   not a fitting failure. Genuine current-run review/adjudication and the
+   promoted-release evidence check subsequently passed.
+
+3. Inputs and safety: PASS. Exact membership is 544 discovery products plus
+   six selected-clean supports. All five public ALMA parent transformations
+   reproduce the approved derived bytes. All 550 preserved input hashes were
+   unchanged before/after the final preparation check. No-clobber recovery,
+   conversion/output-path guards and copied SMA channel-metadata checks pass.
+   Calibration, averaging and channel exclusions were not changed.
+
+4. Scientific comparison: PASS, with no differences in scope. Fresh sorted
+   495 rows and all 23 downstream products are byte-exact to v1.0.10; the
+   accepted 501-row machine table, 23 printed Table 1 rows plus notes/references,
+   and all 16 contamination-table rows match directly. All 19 S230 selections
+   (12 detections, seven limits), 21 BHS parameter rows, NGC 4945's 45 x 69
+   fields and seven component records match. The full 498 x 67 noise audit,
+   rebuilt 19 x 83 astrometry table and recovery products match exactly.
+   All 485 physical products in the recovery checksum lock were verified.
+
+5. Publication products: PASS. Four uncertainty daggers and the accepted
+   seven-column continuum excerpt are restored; Figure 1 has no error bars.
+   All six SED PNGs match the accepted files byte-for-byte. The BHS PNG/PDF
+   reproduce the shipped candidate exactly and were visually checked. The
+   BHS PNG differs from the accepted saved PNG in 80 pixels / 88 channel
+   values; exact accepted-image equality is NOT claimed. Plotted data agree.
+   The notebook benchmark is checked statically (0.075 / 0.007).
+
+6. Complete source tests: PASS. All 37 test modules ran in their specified
+   fitting/rendering environments: 474 cases, 467 passed, seven skipped,
+   zero failures/errors. Skips require an adjacent private manuscript or
+   response package absent from the software archive. Separate direct
+   accepted-table/figure comparisons above were actually performed.
+
+Limits
+This is preserved-image reproduction, not a fresh raw-MIR calibration test.
+Fresh MIR-to-MS conversion was not executed. The separate NGC 4258 SMA
+delivery/reduction discrepancy remains unresolved and did not replace the
+adopted flux. Full notebooks and unpublished paired posteriors were not run.
+The final plot check reused the documented locked rendering environment,
+which was not rebuilt from its OS recipe during this final check. Telescope
+data, installed runtimes and private manuscript/response files are external
+prerequisites, not ZIP payload. Physical/model assumptions remain conditional;
+these tests do not establish their astrophysical correctness.
+
+See INSTALL.md, DATA_ACCESS.md, RENDERING_ENVIRONMENT.txt and
+RELEASE_NOTES_v1.0.11-rc1.md for setup, input recovery and repair details.
+No paper/citation edit, Zenodo upload, publication or candidate email occurred.

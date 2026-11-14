@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scope": "historical fourth-stage fixtochosenfreq validation only",
+  "status": "complete",
+  "completed_hst": "2026-08-12T21:01:03.448321740-10:00",
+  "elapsed_seconds_approx": 4022.844,
+  "interpreter": {
+    "casa_version": "6.7.3.21",
+    "python_environment": "preserved archive .venv-casa",
+    "environment_limitation": "PYTHONPATH and LD_LIBRARY_PATH were inherited for the CASA run; a separate row-wise validator ran with both unset"
+  },
+  "inputs": {
+    "total": 455,
+    "archive_alma_vla": 440,
+    "sma": 15,
+    "sma_selected_clean": 3,
+    "sma_niter0": 12
+  },
+  "outputs": {
+    "generated_alma_vla_model_directories": 415,
+    "accepted_nonempty_rows": 409,
+    "excluded_archive_paths": 46,
+    "scientific_comparison": "PASS",
+    "archive_isolation_check": "PASS",
+    "generated_sorted_summary_sha256": "f8a6143907b089907a46d8b82b3fb079b3204b52e79ddedf7264c30ef5c18258",
+    "generated_bad_paths_sha256": "c5d5c080e87274168a33fc7b6d6adcd61304a13096094e5c7e4866d423428491"
+  },
+  "code_provenance": {
+    "working_source_sha256": "8a133ad2ce1f942de5a2a465a1c51722350ac8182d1b0510376efad1ef3b4b1d",
+    "executed_isolated_copy_sha256": "94d5dd02133ff8046890809235b47a3cc878c175c8b400962e3e4520bb5e9450",
+    "archived_hardware_script_sha256": "8e83272fd601a199eda97deb6bd415d0cbc44351404634b3d265da7038a28357",
+    "attempt_local_patch": "external notifications disabled",
+    "interpretation": "dataset-specific behavioral equivalence, not byte-identical archived-code execution"
+  },
+  "source_evidence_sha256": {
+    "status_json": "6f3845857376a9e7dae185615e2a609c831362d4a50f0a1a8de96eed40d2bb04",
+    "command_record": "445fb85a5863bd46f29dfb1385f299f1eeecfa7000c326b92f259964f7f1321a",
+    "stdout_stderr_log": "55321cda6ee426231e0facd213eedf298098e02b4cececbfd181f66e3d32b88d"
+  },
+  "anchor_identity_reference": "chosen_frequency_anchor_reference.csv",
+  "scientific_limit": "This validates the historical fourth stage and its preserved generic anchors only. It does not validate current corrected WCS routing, product exclusions, component policy, or the mandatory NGC 4945 source-18 fixed-nucleus result."
+}

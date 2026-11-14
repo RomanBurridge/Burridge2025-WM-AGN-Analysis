@@ -1,27 +1,29 @@
+"""Compatibility entry point for the deterministic BHS table builder.
+
+Historically this script executed every code cell in ``BH_Parameters.ipynb``.
+That made stale exploratory cells part of the publication pipeline.  The
+audited workflow now calls one ordinary Python builder with explicit input
+tables; the notebook is only a readable diagnostic companion.
+"""
+
 from __future__ import annotations
 
-import json
-import os
+import subprocess
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-NOTEBOOK_PATH = ROOT / "BH_Parameters.ipynb"
+BUILDER_PATH = ROOT / "analysis" / "CountingBHS_and_Spectra" / "build_bhs_params.py"
 OUTPUT_PATH = ROOT / "analysis" / "CountingBHS_and_Spectra" / "BHS_params.csv"
 
 
 def main() -> None:
-    os.chdir(ROOT)
-    nb = json.loads(NOTEBOOK_PATH.read_text())
-    namespace = {"__name__": "__main__"}
-
-    for cell in nb.get("cells", []):
-        if cell.get("cell_type") != "code":
-            continue
-        source = "".join(cell.get("source", []))
-        if not source.strip():
-            continue
-        exec(compile(source, str(NOTEBOOK_PATH), "exec"), namespace)
+    subprocess.run(
+        [sys.executable, str(BUILDER_PATH), "--require-final"],
+        cwd=ROOT,
+        check=True,
+    )
 
     if not OUTPUT_PATH.exists():
         raise FileNotFoundError(f"Expected BHS export was not created: {OUTPUT_PATH}")
